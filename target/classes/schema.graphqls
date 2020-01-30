@@ -1,0 +1,18 @@
+type Training {
+  id_training: ID!
+  name: String!
+}
+
+type Query {
+  allTrainings: [Training]
+}
+
+type Mutation {
+  createTraining(name: String!): Training
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
