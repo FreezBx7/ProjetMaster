@@ -5,6 +5,7 @@ type Training {
 
 type Query {
   allTrainings: [Training]
+  TrainingById(id_training: ID!): Training
 }
 
 type Mutation {

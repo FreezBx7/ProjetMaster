@@ -20,5 +20,9 @@ public class Query implements GraphQLRootResolver {
 		return trainingRepository.getAllTrainings();
 	}
 	
+	public Training TrainingById(int id) {
+		return trainingRepository.findById(id);
+	}
+	
 
 }

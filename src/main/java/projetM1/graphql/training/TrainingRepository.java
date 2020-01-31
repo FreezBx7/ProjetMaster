@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bson.Document;
+import static com.mongodb.client.model.Filters.eq;
 
 import com.mongodb.client.MongoCollection;
 
@@ -15,6 +16,10 @@ public class TrainingRepository {
 		this.trainings = trainings;
 	}
 	
+	public Training findById(int id) {
+		Document doc = trainings.find(eq("id_training",id)).first();
+		return training(doc);
+	}
 	
 	public List<Training> getAllTrainings(){
 		List<Training> allTrainings = new ArrayList<>();
