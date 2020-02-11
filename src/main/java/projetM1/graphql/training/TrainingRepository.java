@@ -37,7 +37,7 @@ public class TrainingRepository {
 	}
 	
 	private Training training(Document doc) {
-        return new Training(doc.getString("name"));
+        return new Training(doc.getInteger("id_training"),doc.getString("name"));
     }
 
 }

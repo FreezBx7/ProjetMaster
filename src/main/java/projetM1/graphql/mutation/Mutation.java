@@ -1,5 +1,7 @@
 package projetM1.graphql.mutation;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
 import projetM1.graphql.member.Member;
@@ -22,7 +24,9 @@ public class Mutation implements GraphQLRootResolver {
     }
     
     public Training createTraining(String name) {
-        Training newTraining = new Training(name);
+    	AtomicInteger count = new AtomicInteger(0);
+    	int id = count.incrementAndGet();
+        Training newTraining = new Training(id,name);
         trainingRepository.saveTraining(newTraining);
         return newTraining;
     }
