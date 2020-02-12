@@ -28,7 +28,9 @@ public class PriceRepository {
 	public List<Price> getAllPrices(){
 		List<Price> allPrices = new ArrayList<>();
 		for(Document doc : prices.find()) {
-			allPrices.add(price(doc));
+			if(doc.getInteger("id_price") != null) {
+				allPrices.add(price(doc));
+			}	
 		}
 		return allPrices;
 	}
@@ -43,7 +45,8 @@ public class PriceRepository {
 	}
 	
 	private Price price(Document doc) {
-        return new Price(doc.getString("name"),
+        return new Price(doc.getInteger("id_price"),
+        				 doc.getString("name"),
         				 doc.getDouble("price"),
         				 doc.getBoolean("active"));
     }
