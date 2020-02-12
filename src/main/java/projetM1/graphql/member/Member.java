@@ -6,7 +6,7 @@ import projetM1.graphql.price.Price;
 
 public class Member {
 	
-	private static final AtomicInteger count = new AtomicInteger(0); 
+	//private static final AtomicInteger count = new AtomicInteger(0); 
 	private final int id_member;
 	private final String card;
 	private final String name;
@@ -21,11 +21,11 @@ public class Member {
 	private final boolean administrator;
 	private final boolean superAdministrator;
 	
-	public Member(String card, String name, String firstName, String link_photo, String email,
+	public Member(int id,String card, String name, String firstName, String link_photo, String email,
 			int price, int code, int secret_code, boolean adherent, boolean active, boolean administrator,
 			boolean superAdministrator) {
 		super();
-		this.id_member = count.incrementAndGet();
+		this.id_member = id;
 		this.card = card;
 		this.name = name;
 		this.firstName = firstName;

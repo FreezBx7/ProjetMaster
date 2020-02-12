@@ -34,7 +34,10 @@ public class MemberRepository {
 	public List<Member> getAllMembers(){
 		List<Member> allMembers = new ArrayList<>();
 		for(Document doc : members.find()) {
-			allMembers.add(member(doc));
+			if(doc.getInteger("id_member") != null) {
+				allMembers.add(member(doc));
+			}
+			
 		}
 		return allMembers;
 	}
@@ -56,6 +59,7 @@ public class MemberRepository {
         doc.append("superAdministrator", member.isSuperAdministrator());
         members.insertOne(doc);
         return new Member(
+        		member.getId_member(),
         		member.getCard(),
         		member.getName(),
         		member.getFirstName(),
@@ -72,7 +76,8 @@ public class MemberRepository {
 	}
 	
 	private Member member(Document doc) {
-        return new Member(doc.getString("card"),
+        return new Member(doc.getInteger("id_member"),
+        				  doc.getString("card"),
         				  doc.getString("name"),
         				  doc.getString("first_name"),
         				  doc.getString("link_photo"),

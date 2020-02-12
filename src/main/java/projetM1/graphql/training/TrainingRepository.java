@@ -23,8 +23,12 @@ public class TrainingRepository {
 	
 	public List<Training> getAllTrainings(){
 		List<Training> allTrainings = new ArrayList<>();
+		
 		for(Document doc : trainings.find()) {
-			allTrainings.add(training(doc));
+			if(doc.getInteger("id_training") != null) {
+				allTrainings.add(training(doc));
+			}
+			
 		}
 		return allTrainings;
 	}
@@ -37,7 +41,7 @@ public class TrainingRepository {
 	}
 	
 	private Training training(Document doc) {
-        return new Training(doc.getString("name"));
+        return new Training(doc.getInteger("id_training"),doc.getString("name"));
     }
 
 }
