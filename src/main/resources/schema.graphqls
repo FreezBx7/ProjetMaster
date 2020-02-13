@@ -1,3 +1,32 @@
+type ticketSlip {
+  id_ticketSlip: ID!
+  fifty: Int!
+  twenty: Int!
+  ten: Int!
+  five:Int!
+  date: String!
+  total_amount: Float!
+  member: Member!
+  num_slip: String!
+}
+
+type coinsSlip {
+  id_coinsSlip: ID!
+  two: Int!
+  one: Int!
+  fiftycents: Int!
+  twentycents: Int!
+  tencents: Int!
+  fivecents: Int!
+  twocents: Int!
+  onecents: Int!
+  date: String!
+  total_amount: Float!
+  member: Member!
+  num_slip: String!
+}
+
+
 type Training {
   id_training: ID!
   name: String!
