@@ -1,0 +1,50 @@
+type Training {
+  id_training: ID!
+  name: String!
+}
+
+type Member {
+  id_member: ID!
+  card: String!
+  name: String!
+  firstName: String!
+  link_photo: String!
+  email: String!
+  price: Price!
+  code: Int!
+  secret_code: Int!
+  adherent: Boolean!
+  active: Boolean!
+  administrator: Boolean!
+  superAdministrator: Boolean!
+}
+
+type Price{
+  id_price: ID!
+  name: String!
+  price: Float!
+  active: Boolean!
+}
+
+
+type Query {
+  allTrainings: [Training]
+  TrainingById(id_training: ID!): Training
+  allMembers: [Member]
+  MemberById(id_member: ID!): Member
+  allPrices: [Price]
+  PriceById(id_price: ID!): Price
+  
+}
+
+type Mutation {
+  createTraining(name: String!): Training
+  createMember(card: String!,name: String!,first_name: String!,link_photo: String!,email: String!,priceId: ID!,code: Int!,secret_code: Int!,adherent: Boolean!,active: Boolean!,administrator: Boolean!,superAdministrator: Boolean!): Member
+  createPrice(name: String!,price: Float!,active: Boolean!): Price
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
