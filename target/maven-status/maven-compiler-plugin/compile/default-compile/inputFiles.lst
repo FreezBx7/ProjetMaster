@@ -1,10 +1,13 @@
-D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\query\Query.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\GraphQLEndpoint.java
+D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\training\Training.java
+D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\slip\ticket\TicketSlip.java
+D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\query\Query.java
+D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\slip\coins\CoinsSlip.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\member\MemberResolver.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\mutation\Mutation.java
-D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\training\Training.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\member\Member.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\member\MemberRepository.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\price\PriceRepository.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\price\Price.java
 D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\training\TrainingRepository.java
+D:\Documents\ProjetM1\ProjetMaster\src\main\java\projetM1\graphql\slip\Slip.java
