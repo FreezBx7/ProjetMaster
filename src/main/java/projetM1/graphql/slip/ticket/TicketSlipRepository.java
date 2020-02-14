@@ -24,6 +24,10 @@ public class TicketSlipRepository {
 		Document doc = ticketSlips.find(eq("date",date)).first();
 		return ticketSlip(doc);
 	}
+	public TicketSlip findById(int id) {
+		Document doc = ticketSlips.find(eq("id_ticketSlip",id)).first();
+		return ticketSlip(doc);
+	}
 	
 	public List<TicketSlip> getAllTicketSlip(){
 		List<TicketSlip> allTicketSlips = new ArrayList<>();
@@ -37,7 +41,7 @@ public class TicketSlipRepository {
 	
 	public void saveTicketSlip(TicketSlip ticketSlip) {
 		Document doc = new Document();
-		doc.append("id_ticketSlip", ticketSlip.getTicketSlipId());
+		doc.append("id_ticketSlip", ticketSlip.getId_ticketSlip());
 		doc.append("fifty", ticketSlip.getFifty());
 		doc.append("twenty", ticketSlip.getTwenty());
 		doc.append("ten", ticketSlip.getTen());

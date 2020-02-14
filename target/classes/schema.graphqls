@@ -72,6 +72,10 @@ type Query {
   PriceById(id_price: ID!): Price
   allProducts: [Product]
   ProductByBarCode(barcode: String!): Product
+  allTicketSlips: [ticketSlip]
+  allCoinsSlips: [coinsSlip]
+  TicketSlipByDate(date: String!): ticketSlip
+  CoinsSlipByDate(date: String!): coinsSlip
 }
 
 type Mutation {
@@ -79,6 +83,8 @@ type Mutation {
   createMember(card: String!,name: String!,first_name: String!,link_photo: String!,email: String!,priceId: ID!,code: Int!,secret_code: Int!,adherent: Boolean!,active: Boolean!,administrator: Boolean!,superAdministrator: Boolean!): Member
   createPrice(name: String!,price: Float!,active: Boolean!): Price
   createProduct(barcode: String!, name: String!, selling_price: Float!): Product
+  createTicketSlip(fifty: Int!, twenty: Int!, ten: Int!, five:Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): ticketSlip
+  createCoinsSlip(two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): coinsSlip
 }
 
 schema {

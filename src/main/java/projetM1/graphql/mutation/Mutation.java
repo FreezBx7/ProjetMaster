@@ -9,6 +9,8 @@ import projetM1.graphql.price.Price;
 import projetM1.graphql.price.PriceRepository;
 import projetM1.graphql.product.Product;
 import projetM1.graphql.product.ProductRepository;
+import projetM1.graphql.slip.ticket.TicketSlip;
+import projetM1.graphql.slip.ticket.TicketSlipRepository;
 import projetM1.graphql.training.Training;
 import projetM1.graphql.training.TrainingRepository;
 
@@ -18,13 +20,15 @@ public class Mutation implements GraphQLRootResolver {
     private final MemberRepository memberRepository;
     private final PriceRepository priceRepository;
 	private final ProductRepository productRepository;
+	private final TicketSlipRepository ticketSlipRepository;
 
     public Mutation(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
-    		ProductRepository productRepository) {
+    		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository) {
         this.trainingRepository = trainingRepository;
         this.memberRepository = memberRepository;
         this.priceRepository = priceRepository;
         this.productRepository = productRepository;
+        this.ticketSlipRepository = ticketSlipRepository;
     }
     
     public Training createTraining(String name) {
@@ -56,5 +60,14 @@ public class Mutation implements GraphQLRootResolver {
     	Product newProduct = new Product(count,barcode,name,selling_price);
     	productRepository.saveProduct(newProduct);
     	return newProduct;
+    }
+    
+    public TicketSlip createTicketSlip(int fifty,int twenty, int ten, int five,String date, 
+			double total_amount, int memberId, String num_slip) {
+    	int count = ticketSlipRepository.getAllTicketSlip().size() + 1;
+    	TicketSlip newTicketSlip = new TicketSlip(count, fifty, twenty, ten, five, date, total_amount, memberId, num_slip);
+    	ticketSlipRepository.saveTicketSlip(newTicketSlip);
+    	return newTicketSlip;
+    	
     }
 }
