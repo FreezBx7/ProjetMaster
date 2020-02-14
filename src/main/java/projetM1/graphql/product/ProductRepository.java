@@ -35,6 +35,7 @@ public class ProductRepository {
 	
 	public void saveProduct(Product product) {
 		Document doc = new Document();
+		doc.append("id_product", product.getId_product());
 		doc.append("barcode", product.getBarcode());
         doc.append("name", product.getName());
         doc.append("selling_price", product.getSelling_price());
@@ -42,7 +43,8 @@ public class ProductRepository {
 	}
 	
 	private Product products(Document doc) {
-        return new Product(doc.getString("barcode"),
+        return new Product(doc.getInteger("id_product"),
+        				 doc.getString("barcode"),
         				 doc.getString("name"),
         				 doc.getDouble("selling_price"));
     }

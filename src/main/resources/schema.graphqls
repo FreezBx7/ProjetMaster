@@ -27,6 +27,7 @@ type Price{
 }
 
 type Product{
+  id_product: ID!
   barcode: String!
   name: String!
   selling_price: Float!

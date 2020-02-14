@@ -52,7 +52,8 @@ public class Mutation implements GraphQLRootResolver {
     }
     
     public Product createProduct(String barcode, String name, double selling_price) {
-    	Product newProduct = new Product(barcode,name,selling_price);
+    	int count = productRepository.getAllProducts().size() + 1;
+    	Product newProduct = new Product(count,barcode,name,selling_price);
     	productRepository.saveProduct(newProduct);
     	return newProduct;
     }
