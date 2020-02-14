@@ -9,8 +9,11 @@ public class TicketSlip extends Slip {
 	private final int twenty;
 	private final int ten;
 	private final int five;
-	public TicketSlip(String date, double total_amount, int memberId, String num_slip, int ticketSlipId, int fifty,
-			int twenty, int ten, int five) {
+	
+
+	
+	public TicketSlip(int ticketSlipId,int fifty,int twenty, int ten, int five,String date, 
+			double total_amount, int memberId, String num_slip) {
 		super(date, total_amount, memberId, num_slip);
 		this.ticketSlipId = ticketSlipId;
 		this.fifty = fifty;
