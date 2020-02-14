@@ -12,6 +12,7 @@ import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.member.MemberResolver;
 import projetM1.graphql.mutation.Mutation;
 import projetM1.graphql.price.PriceRepository;
+import projetM1.graphql.product.ProductRepository;
 import projetM1.graphql.query.Query;
 import projetM1.graphql.training.TrainingRepository;
 
@@ -27,6 +28,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final TrainingRepository  trainingRepository;
 	private static final MemberRepository memberRepository;
 	private static final PriceRepository priceRepository;
+	private static final ProductRepository productRepository;
 
 	static {
         //Change to `new MongoClient("<host>:<port>")`
@@ -35,6 +37,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         trainingRepository = new TrainingRepository(mongo.getCollection("training"));
         memberRepository = new MemberRepository(mongo.getCollection("member"));
         priceRepository = new PriceRepository(mongo.getCollection("price"));
+        productRepository = new ProductRepository(mongo.getCollection("product"));
     }
 	
 	public GraphQLEndpoint() {
@@ -46,8 +49,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(
-                		new Query(trainingRepository,memberRepository,priceRepository),
-                		new Mutation(trainingRepository,memberRepository,priceRepository),
+                		new Query(trainingRepository,memberRepository,priceRepository,productRepository),
+                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository),
                 		new MemberResolver(priceRepository))
                 .build()
                 .makeExecutableSchema();
