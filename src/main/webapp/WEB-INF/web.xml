@@ -1,0 +1,22 @@
+<web-app>
+
+    <servlet>
+    <servlet-name>GraphQLEndpoint</servlet-name>
+    <servlet-class>projetM1.graphql.GraphQLEndpoint</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+    <servlet-name>GraphQLEndpoint</servlet-name>
+    <url-pattern>/graphql</url-pattern>
+    </servlet-mapping>
+
+   <filter>
+       <filter-name>CorsFilter</filter-name>
+       <filter-class>projetM1.filters.SimpleCORSFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+       <filter-name>CorsFilter</filter-name>
+       <url-pattern>/graphql/*</url-pattern>
+   </filter-mapping>
+</web-app>

@@ -1,6 +1,5 @@
 package projetM1.graphql.price;
 
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Price {
 	
