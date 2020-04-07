@@ -4,9 +4,22 @@ import com.coxautodev.graphql.tools.SchemaParser;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-import javax.servlet.annotation.WebServlet;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
 
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import graphql.GraphQLError;
 import graphql.schema.GraphQLSchema;
+import graphql.servlet.GraphQLContext;
+import graphql.servlet.GraphQLServlet;
+import graphql.servlet.GraphQLServletListener;
 import graphql.servlet.SimpleGraphQLServlet;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.member.MemberResolver;
@@ -20,7 +33,7 @@ import projetM1.graphql.training.TrainingRepository;
 
 
 @SuppressWarnings("resource")
-@WebServlet(urlPatterns = "/graphql")
+@WebServlet(name = "GraphQLEndpoint", urlPatterns = {"/graphql/*"}, loadOnStartup = 1)
 public class GraphQLEndpoint extends SimpleGraphQLServlet {
 
     /**
@@ -33,6 +46,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final ProductRepository productRepository;
 	private static final TicketSlipRepository ticketSlipRepository;
 
+	
+	
 	static {
         //Change to `new MongoClient("<host>:<port>")`
         //if you don't have Mongo running locally on port 27017
@@ -47,9 +62,12 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	
 	public GraphQLEndpoint() {
         super(buildSchema());
-    }
+     
+	}
 
     private static GraphQLSchema buildSchema() {
+    	
+    	
         
         return SchemaParser.newParser()
                 .file("schema.graphqls")
@@ -60,5 +78,15 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
                 		new TicketSlipResolver(memberRepository))
                 .build()
                 .makeExecutableSchema();
+        
+        
+
     }
+    
+
+    
+
+
+
+
 }
