@@ -55,6 +55,7 @@ public class Mutation implements GraphQLRootResolver {
     
     public Price createPrice(String name, double price, boolean active) {
     	int count = priceRepository.getAllPrices().size() + 1;
+    	System.out.println(count);
     	Price newPrice = new Price(count,name,price,active);
     	priceRepository.savePrice(newPrice);
     	return newPrice;
