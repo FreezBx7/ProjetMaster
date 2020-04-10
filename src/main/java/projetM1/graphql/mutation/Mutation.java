@@ -41,6 +41,7 @@ public class Mutation implements GraphQLRootResolver {
     	int count = memberRepository.getAllMembers().size() + 1;
     	Member newMember = new Member(count,card,name,firstName,link_photo,email,price,code,secret_code,adherent,active,administrator,superAdministrator);
     	memberRepository.saveMember(newMember);
+    	
     	return newMember;
     }
     
