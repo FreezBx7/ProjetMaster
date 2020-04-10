@@ -110,11 +110,11 @@
         // This example expects a GraphQL server at the path /graphql.
         // Change this to point wherever you host your GraphQL server.
         return fetch('/graphql', {
-            method: 'post',
+            method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 5959649b3b067a55a3c1ffad',
+                
             },
             body: JSON.stringify(graphQLParams),
             credentials: 'include',

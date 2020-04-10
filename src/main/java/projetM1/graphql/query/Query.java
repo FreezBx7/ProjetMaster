@@ -10,6 +10,10 @@ import projetM1.graphql.price.Price;
 import projetM1.graphql.price.PriceRepository;
 import projetM1.graphql.product.Product;
 import projetM1.graphql.product.ProductRepository;
+import projetM1.graphql.slip.coins.CoinsSlip;
+import projetM1.graphql.slip.coins.CoinsSlipRepository;
+import projetM1.graphql.slip.ticket.TicketSlip;
+import projetM1.graphql.slip.ticket.TicketSlipRepository;
 import projetM1.graphql.training.Training;
 import projetM1.graphql.training.TrainingRepository;
 
@@ -19,14 +23,19 @@ public class Query implements GraphQLRootResolver {
 	private final MemberRepository memberRepository;
 	private final PriceRepository priceRepository;
 	private final ProductRepository productRepository;
+	private final TicketSlipRepository ticketSlipRepository;
+	private final CoinsSlipRepository coinsSlipRepository;
 
 	public Query(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
-			ProductRepository productRepository) {
+			ProductRepository productRepository,TicketSlipRepository ticketSlipRepository, CoinsSlipRepository coinsSlipRepository) {
 		
 		this.trainingRepository = trainingRepository;
 		this.memberRepository = memberRepository;
 		this.priceRepository = priceRepository;
 		this.productRepository = productRepository;
+		this.ticketSlipRepository = ticketSlipRepository;
+		this.coinsSlipRepository = coinsSlipRepository;
+		
 	}
 	
 	public List<Training> allTrainings(){
@@ -61,5 +70,20 @@ public class Query implements GraphQLRootResolver {
 		return productRepository.findByBarCode(barcode);
 	}
 	
+	public List<TicketSlip> allTicketSlips(){
+		return ticketSlipRepository.getAllTicketSlip();
+	}
+	
+	public TicketSlip TicketSlipByDate(String date) {
+		return ticketSlipRepository.findByDate(date);
+	}
+	
+	public List<CoinsSlip> allCoinsSlips(){
+		return coinsSlipRepository.getAllCoinsSlip();
+	}
+	
+	public CoinsSlip CoinsSlipByDate(String date) {
+		return coinsSlipRepository.findByDate(date);
+	}
 
 }

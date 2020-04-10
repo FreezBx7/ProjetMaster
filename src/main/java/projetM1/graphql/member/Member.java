@@ -1,8 +1,5 @@
 package projetM1.graphql.member;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-import projetM1.graphql.price.Price;
 
 public class Member {
 	
