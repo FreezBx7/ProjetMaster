@@ -38,6 +38,8 @@ public class Query implements GraphQLRootResolver {
 		
 	}
 	
+
+
 	public List<Training> allTrainings(){
 		return trainingRepository.getAllTrainings();
 	}
