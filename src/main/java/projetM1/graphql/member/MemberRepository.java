@@ -47,7 +47,7 @@ public class MemberRepository {
 		doc.append("id_member", member.getId_member());
         doc.append("card", member.getCard());
         doc.append("name", member.getName());
-        doc.append("firstName", member.getFirstName());
+        doc.append("first_name", member.getFirstName());
         doc.append("link_photo", member.getLink_photo());
         doc.append("email", member.getEmail());
         doc.append("price", member.getPriceId());
