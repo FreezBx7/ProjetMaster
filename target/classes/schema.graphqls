@@ -47,7 +47,7 @@ type Query {
 
 type Mutation {
   createTraining(name: String!): Training
-  createMember(card: String!,name: String!,first_name: String!,link_photo: String!,email: String!,priceId: ID!,code: Int!,secret_code: Int!,adherent: Boolean!,active: Boolean!,administrator: Boolean!,superAdministrator: Boolean!): Member
+  createMember(card: String!,name: String!,firstName: String!,link_photo: String!,email: String!,priceId: ID!,code: Int!,secret_code: Int!,adherent: Boolean!,active: Boolean!,administrator: Boolean!,superAdministrator: Boolean!): Member
   createPrice(name: String!,price: Float!,active: Boolean!): Price
   createProduct(barcode: String!, name: String!, selling_price: Float!): Product
 }
