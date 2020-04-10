@@ -4,6 +4,7 @@ import projetM1.graphql.slip.Slip;
 
 public class CoinsSlip extends Slip {
 	
+	private final int id_coinsSlip;
 	private final int two;
 	private final int one;
 	private final int fiftycents;
@@ -16,9 +17,10 @@ public class CoinsSlip extends Slip {
 	
 	
 	
-	public CoinsSlip(String date, double total_amount, int memberId, String num_slip, int two, int one, int fiftycents,
-			int twentycents, int tencents, int fivecents, int twocents, int onecents) {
+	public CoinsSlip(int coinsSlipID, int two, int one, int fiftycents,
+			int twentycents, int tencents, int fivecents, int twocents, int onecents, String date, double total_amount, int memberId, String num_slip) {
 		super(date, total_amount, memberId, num_slip);
+		this.id_coinsSlip = coinsSlipID;
 		this.two = two;
 		this.one = one;
 		this.fiftycents = fiftycents;
@@ -30,6 +32,12 @@ public class CoinsSlip extends Slip {
 	}
 	
 	
+
+
+	public int getId_coinsSlip() {
+		return id_coinsSlip;
+	}
+
 	public int getTwo() {
 		return two;
 	}

@@ -15,7 +15,7 @@ public class TicketSlipResolver implements GraphQLResolver<TicketSlip>{
 	}
 
 	public Member member(TicketSlip ticketSlip) {
-		return memberRepository.findById(ticketSlip.getId_ticketSlip());
+		return memberRepository.findById(ticketSlip.getMemberId());
 	}
 	
 	
