@@ -27,6 +27,8 @@ import projetM1.graphql.mutation.Mutation;
 import projetM1.graphql.price.PriceRepository;
 import projetM1.graphql.product.ProductRepository;
 import projetM1.graphql.query.Query;
+import projetM1.graphql.reduction.ReductionRepository;
+import projetM1.graphql.reduction.ReductionResolver;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.coins.CoinsSlipResolver;
 import projetM1.graphql.slip.ticket.TicketSlipRepository;
@@ -48,6 +50,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final ProductRepository productRepository;
 	private static final TicketSlipRepository ticketSlipRepository;
 	private static final CoinsSlipRepository coinsSlipRepository;
+	private static final ReductionRepository reductionRepository;
 	
 	
 	static {
@@ -60,6 +63,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         productRepository = new ProductRepository(mongo.getCollection("product"));
         ticketSlipRepository = new TicketSlipRepository(mongo.getCollection("ticketSlip"));
         coinsSlipRepository = new CoinsSlipRepository(mongo.getCollection("coinsSlip"));
+        reductionRepository = new ReductionRepository(mongo.getCollection("reduction"));
         
     }
 	
@@ -75,11 +79,12 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(
-                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository),
-                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository),
+                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
+                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
                 		new MemberResolver(priceRepository),
                 		new TicketSlipResolver(memberRepository),
-                		new CoinsSlipResolver(memberRepository))
+                		new CoinsSlipResolver(memberRepository),
+                		new ReductionResolver(productRepository))
                 .build()
                 .makeExecutableSchema();
         

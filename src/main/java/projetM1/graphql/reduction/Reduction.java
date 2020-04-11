@@ -1,8 +1,8 @@
 package projetM1.graphql.reduction;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import projetM1.graphql.product.Product;
 
 public class Reduction {
 	
@@ -10,16 +10,23 @@ public class Reduction {
 	private final String name;
 	private final boolean active;
 	private final double rate;
-	private final List<Product> products;
+	private List<Integer> id_products = new ArrayList<Integer>();
 	
-	public Reduction(int id_reduction, String name, boolean active, double rate, List<Product> products) {
+	public Reduction(int id_reduction, String name, boolean active, double rate, List<Integer> id_products2) {
 		super();
 		this.id_reduction = id_reduction;
 		this.name = name;
 		this.active = active;
 		this.rate = rate;
-		this.products = products;
+		this.id_products = id_products2;
 	}
+	
+	
+
+	public List<Integer> getId_products() {
+		return id_products;
+	}
+
 
 	public int getId_reduction() {
 		return id_reduction;
@@ -37,8 +44,5 @@ public class Reduction {
 		return rate;
 	}
 
-	public List<Product> getProducts() {
-		return products;
-	}
 
 }

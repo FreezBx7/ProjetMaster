@@ -48,6 +48,14 @@ type Member {
   superAdministrator: Boolean!
 }
 
+type Reduction{
+  id_reduction: ID!
+  name: String!
+  active: Boolean!
+  rate: Float!
+  products: [Product]!
+}
+
 type Price{
   id_price: ID!
   name: String!
@@ -76,9 +84,12 @@ type Query {
   allCoinsSlips: [coinsSlip]
   TicketSlipByDate(date: String!): ticketSlip
   CoinsSlipByDate(date: String!): coinsSlip
+  allReductions: [Reduction]
+  reductionById(id_reduction: ID!): Reduction
 }
 
 type Mutation {
+  createReduction(name: String!,active: Boolean!,rate: Float!,products: [ID]!): Reduction
   createTraining(name: String!): Training
   createMember(card: String!,name: String!,firstName: String!,link_photo: String!,email: String!,priceId: ID!,code: Int!,secret_code: Int!,adherent: Boolean!,active: Boolean!,administrator: Boolean!,superAdministrator: Boolean!): Member
   createPrice(name: String!,price: Float!,active: Boolean!): Price
