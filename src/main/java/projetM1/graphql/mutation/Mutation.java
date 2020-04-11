@@ -1,6 +1,9 @@
 package projetM1.graphql.mutation;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
 import projetM1.graphql.member.Member;
@@ -9,6 +12,8 @@ import projetM1.graphql.price.Price;
 import projetM1.graphql.price.PriceRepository;
 import projetM1.graphql.product.Product;
 import projetM1.graphql.product.ProductRepository;
+import projetM1.graphql.reduction.Reduction;
+import projetM1.graphql.reduction.ReductionRepository;
 import projetM1.graphql.slip.coins.CoinsSlip;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.ticket.TicketSlip;
@@ -24,15 +29,18 @@ public class Mutation implements GraphQLRootResolver {
 	private final ProductRepository productRepository;
 	private final TicketSlipRepository ticketSlipRepository;
 	private final CoinsSlipRepository coinsSlipRepository;
+	private final ReductionRepository reductionRepository;
 
     public Mutation(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
-    		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository,CoinsSlipRepository coinsSlipRepository) {
+    		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository,CoinsSlipRepository coinsSlipRepository,
+    		ReductionRepository reductionRepository) {
         this.trainingRepository = trainingRepository;
         this.memberRepository = memberRepository;
         this.priceRepository = priceRepository;
         this.productRepository = productRepository;
         this.ticketSlipRepository = ticketSlipRepository;
         this.coinsSlipRepository = coinsSlipRepository;
+        this.reductionRepository = reductionRepository;
     }
     
     public Training createTraining(String name) {
@@ -49,11 +57,13 @@ public class Mutation implements GraphQLRootResolver {
     	int count = memberRepository.getAllMembers().size() + 1;
     	Member newMember = new Member(count,card,name,firstName,link_photo,email,price,code,secret_code,adherent,active,administrator,superAdministrator);
     	memberRepository.saveMember(newMember);
+    	
     	return newMember;
     }
     
     public Price createPrice(String name, double price, boolean active) {
     	int count = priceRepository.getAllPrices().size() + 1;
+    	System.out.println(count);
     	Price newPrice = new Price(count,name,price,active);
     	priceRepository.savePrice(newPrice);
     	return newPrice;
@@ -81,5 +91,11 @@ public class Mutation implements GraphQLRootResolver {
     	coinsSlipRepository.saveCoinsSlip(newCoinsSlip);
     	return newCoinsSlip;
     	
+    }
+    public Reduction createReduction(String name, boolean active, double rate, List<Integer> id_products) {
+    	int count = reductionRepository.getAllReduction().size() + 1;
+    	Reduction newReduction = new Reduction(count,name,active,rate,id_products);
+    	reductionRepository.saveReduction(newReduction);
+    	return newReduction;
     }
 }

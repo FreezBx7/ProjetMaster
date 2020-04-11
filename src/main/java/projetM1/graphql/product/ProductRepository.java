@@ -17,6 +17,10 @@ public class ProductRepository {
 		
 		this.products = products;
 	}
+	public Product findById(int id) {
+		Document doc = products.find(eq("id_product",id)).first();
+		return products(doc);
+	}
 
 	public Product findByBarCode(String barcode) {
 		Document doc = products.find(eq("barcode",barcode)).first();
