@@ -14,6 +14,8 @@ import projetM1.graphql.product.Product;
 import projetM1.graphql.product.ProductRepository;
 import projetM1.graphql.reduction.Reduction;
 import projetM1.graphql.reduction.ReductionRepository;
+import projetM1.graphql.settings.Settings;
+import projetM1.graphql.settings.SettingsRepository;
 import projetM1.graphql.slip.coins.CoinsSlip;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.ticket.TicketSlip;
@@ -30,10 +32,11 @@ public class Mutation implements GraphQLRootResolver {
 	private final TicketSlipRepository ticketSlipRepository;
 	private final CoinsSlipRepository coinsSlipRepository;
 	private final ReductionRepository reductionRepository;
+	private final SettingsRepository settingsRepository;
 
     public Mutation(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
     		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository,CoinsSlipRepository coinsSlipRepository,
-    		ReductionRepository reductionRepository) {
+    		ReductionRepository reductionRepository, SettingsRepository settingsRepository) {
         this.trainingRepository = trainingRepository;
         this.memberRepository = memberRepository;
         this.priceRepository = priceRepository;
@@ -41,6 +44,7 @@ public class Mutation implements GraphQLRootResolver {
         this.ticketSlipRepository = ticketSlipRepository;
         this.coinsSlipRepository = coinsSlipRepository;
         this.reductionRepository = reductionRepository;
+        this.settingsRepository = settingsRepository;
     }
     
     public Training createTraining(String name) {
@@ -97,5 +101,16 @@ public class Mutation implements GraphQLRootResolver {
     	Reduction newReduction = new Reduction(count,name,active,rate,id_products);
     	reductionRepository.saveReduction(newReduction);
     	return newReduction;
+    }
+    public Settings createSettings(String photo_directory,boolean cash_register, boolean scan) {
+    	int count = settingsRepository.getAllSettings().size() + 1;
+    	Settings newSettings = new Settings(count,photo_directory,cash_register,scan);
+    	settingsRepository.saveSettings(newSettings);
+    	return newSettings;
+    }
+    public Settings updateSettings(int id_settings, String photo_directory,boolean cash_register, boolean scan) {
+    	Settings updateSettings = new Settings(id_settings,photo_directory,cash_register,scan);
+    	settingsRepository.updateSettings(updateSettings);
+    	return updateSettings;
     }
 }

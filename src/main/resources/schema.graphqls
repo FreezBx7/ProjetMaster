@@ -63,6 +63,13 @@ type Price{
   active: Boolean!
 }
 
+type Settings{
+  id_settings: ID!
+  photo_directory: String!
+  cash_register: Boolean!
+  scan: Boolean!
+}
+
 type Product{
   id_product: ID!
   barcode: String!
@@ -86,6 +93,7 @@ type Query {
   CoinsSlipByDate(date: String!): coinsSlip
   allReductions: [Reduction]
   reductionById(id_reduction: ID!): Reduction
+  allSettings: [Settings]
 }
 
 type Mutation {
@@ -96,6 +104,8 @@ type Mutation {
   createProduct(barcode: String!, name: String!, selling_price: Float!): Product
   createTicketSlip(fifty: Int!, twenty: Int!, ten: Int!, five:Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): ticketSlip
   createCoinsSlip(two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): coinsSlip
+  createSettings(photo_directory: String!, cash_register: Boolean!, scan: Boolean!) : Settings
+  updateSettings(id_settings: ID!, photo_directory: String, cash_register: Boolean, scan: Boolean) : Settings
 }
 
 schema {

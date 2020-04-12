@@ -12,6 +12,8 @@ import projetM1.graphql.product.Product;
 import projetM1.graphql.product.ProductRepository;
 import projetM1.graphql.reduction.Reduction;
 import projetM1.graphql.reduction.ReductionRepository;
+import projetM1.graphql.settings.Settings;
+import projetM1.graphql.settings.SettingsRepository;
 import projetM1.graphql.slip.coins.CoinsSlip;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.ticket.TicketSlip;
@@ -28,10 +30,11 @@ public class Query implements GraphQLRootResolver {
 	private final TicketSlipRepository ticketSlipRepository;
 	private final CoinsSlipRepository coinsSlipRepository;
 	private final ReductionRepository reductionRepository;
+	private final SettingsRepository settingsRepository;
 
 	public Query(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
 			ProductRepository productRepository,TicketSlipRepository ticketSlipRepository, CoinsSlipRepository coinsSlipRepository,
-			ReductionRepository reductionRepository) {
+			ReductionRepository reductionRepository, SettingsRepository settingsRepository) {
 		
 		this.trainingRepository = trainingRepository;
 		this.memberRepository = memberRepository;
@@ -40,6 +43,7 @@ public class Query implements GraphQLRootResolver {
 		this.ticketSlipRepository = ticketSlipRepository;
 		this.coinsSlipRepository = coinsSlipRepository;
 		this.reductionRepository = reductionRepository;
+		this.settingsRepository = settingsRepository;
 	}
 	
 
@@ -98,6 +102,10 @@ public class Query implements GraphQLRootResolver {
 	
 	public Reduction reductionById(int id) {
 		return reductionRepository.findById(id);
+	}
+	
+	public List<Settings> allSettings(){
+		return settingsRepository.getAllSettings();
 	}
 
 }
