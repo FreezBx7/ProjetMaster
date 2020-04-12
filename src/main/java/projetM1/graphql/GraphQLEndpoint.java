@@ -29,6 +29,7 @@ import projetM1.graphql.product.ProductRepository;
 import projetM1.graphql.query.Query;
 import projetM1.graphql.reduction.ReductionRepository;
 import projetM1.graphql.reduction.ReductionResolver;
+import projetM1.graphql.settings.SettingsRepository;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.coins.CoinsSlipResolver;
 import projetM1.graphql.slip.ticket.TicketSlipRepository;
@@ -51,6 +52,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final TicketSlipRepository ticketSlipRepository;
 	private static final CoinsSlipRepository coinsSlipRepository;
 	private static final ReductionRepository reductionRepository;
+	private static final SettingsRepository settingsRepository;
 	
 	
 	static {
@@ -64,6 +66,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         ticketSlipRepository = new TicketSlipRepository(mongo.getCollection("ticketSlip"));
         coinsSlipRepository = new CoinsSlipRepository(mongo.getCollection("coinsSlip"));
         reductionRepository = new ReductionRepository(mongo.getCollection("reduction"));
+        settingsRepository = new SettingsRepository(mongo.getCollection("settings"));
         
     }
 	
@@ -79,8 +82,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(
-                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
-                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
+                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,settingsRepository),
+                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,settingsRepository),
                 		new MemberResolver(priceRepository),
                 		new TicketSlipResolver(memberRepository),
                 		new CoinsSlipResolver(memberRepository),
