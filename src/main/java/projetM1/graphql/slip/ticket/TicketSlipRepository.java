@@ -9,7 +9,7 @@ import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
-import projetM1.graphql.price.Price;
+
 
 
 public class TicketSlipRepository {

@@ -9,8 +9,7 @@ import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
-import projetM1.graphql.price.Price;
-import projetM1.graphql.training.Training;
+
 
 public class SettingsRepository {
 	private final MongoCollection<Document> settings;
