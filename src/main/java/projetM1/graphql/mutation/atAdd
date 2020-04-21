@@ -1,0 +1,28 @@
+	private final CashFundRepository cashFundRepository;
+
+    public Mutation(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
+    		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository,CoinsSlipRepository coinsSlipRepository,
+    		ReductionRepository reductionRepository, CashFundRepository cashFundRepository) {
+        this.trainingRepository = trainingRepository;
+        this.memberRepository = memberRepository;
+        this.priceRepository = priceRepository;
+        this.productRepository = productRepository;
+        this.ticketSlipRepository = ticketSlipRepository;
+        this.coinsSlipRepository = coinsSlipRepository;
+        this.reductionRepository = reductionRepository;
+        this.cashFundRepository = cashFundRepository;
+    }
+    
+    
+    
+    
+    
+    
+	public CashFund createCashFund(String date, double sum, int member, int fifty, int twenty, int ten, int five,
+			int two, int one, int fiftycents, int twentycents, int tencents, int fivecents, int twocents,
+			int onecents) {
+    	int count = cashFundRepository.getAllCashFunds().size() + 1;
+    	CashFund newCashFund = new CashFund(count, date, sum, member, fifty, twenty, ten, five, two, one, fiftycents, twentycents, tencents, fivecents, twocents, onecents);
+    	cashFundRepository.saveCashFund(newCashFund);
+    	return newCashFund;
+    }

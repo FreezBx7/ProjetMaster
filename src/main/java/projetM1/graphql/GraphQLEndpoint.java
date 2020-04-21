@@ -21,6 +21,7 @@ import graphql.servlet.GraphQLContext;
 import graphql.servlet.GraphQLServlet;
 import graphql.servlet.GraphQLServletListener;
 import graphql.servlet.SimpleGraphQLServlet;
+import projetM1.graphql.cashfund.CashFundRepository;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.member.MemberResolver;
 import projetM1.graphql.mutation.Mutation;
@@ -51,6 +52,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final TicketSlipRepository ticketSlipRepository;
 	private static final CoinsSlipRepository coinsSlipRepository;
 	private static final ReductionRepository reductionRepository;
+	private static final CashFundRepository cashFundRepository;
 	
 	
 	static {
@@ -64,7 +66,7 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         ticketSlipRepository = new TicketSlipRepository(mongo.getCollection("ticketSlip"));
         coinsSlipRepository = new CoinsSlipRepository(mongo.getCollection("coinsSlip"));
         reductionRepository = new ReductionRepository(mongo.getCollection("reduction"));
-        
+        cashFundRepository = new CashFundRepository(mongo.getCollection("cashFund"));
     }
 	
 	public GraphQLEndpoint() {
@@ -79,8 +81,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(
-                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
-                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
+                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository),
+                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository),
                 		new MemberResolver(priceRepository),
                 		new TicketSlipResolver(memberRepository),
                 		new CoinsSlipResolver(memberRepository),

@@ -1,0 +1,30 @@
+	private final CashFundRepository cashFundRepository;
+
+	public Query(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
+			ProductRepository productRepository,TicketSlipRepository ticketSlipRepository, CoinsSlipRepository coinsSlipRepository,
+			ReductionRepository reductionRepository, CashFundRepository cashFundRepository) {
+		
+		this.trainingRepository = trainingRepository;
+		this.memberRepository = memberRepository;
+		this.priceRepository = priceRepository;
+		this.productRepository = productRepository;
+		this.ticketSlipRepository = ticketSlipRepository;
+		this.coinsSlipRepository = coinsSlipRepository;
+		this.reductionRepository = reductionRepository;
+		this.cashFundRepository = cashFundRepository;
+	}
+	
+	
+	
+	public List<CashFund> allCashFunds(){
+		return cashFundRepository.getAllCashFunds();
+	}
+	
+	public List<CashFund> allCashFundsByMember(int member){
+		return cashFundRepository.getAllCashFundsByMember(member);
+	}
+	
+	public CashFund cashFundById(int id) {
+		return cashFundRepository.findById(id);
+	}
+	

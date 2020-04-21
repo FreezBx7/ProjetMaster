@@ -1,0 +1,127 @@
+type cashFund {
+  id_cash: ID!
+  date: String!
+  sum: Float!
+  member: Int!
+  fifty: Int!
+  twenty: Int!
+  ten: Int!
+  five:Int!
+  two: Int!
+  one: Int!
+  fiftycents: Int!
+  twentycents: Int!
+  tencents: Int!
+  fivecents: Int!
+  twocents: Int!
+  onecents: Int!
+}
+
+type ticketSlip {
+  id_ticketSlip: ID!
+  fifty: Int!
+  twenty: Int!
+  ten: Int!
+  five:Int!
+  date: String!
+  total_amount: Float!
+  member: Member!
+  num_slip: String!
+}
+
+type coinsSlip {
+  id_coinsSlip: ID!
+  two: Int!
+  one: Int!
+  fiftycents: Int!
+  twentycents: Int!
+  tencents: Int!
+  fivecents: Int!
+  twocents: Int!
+  onecents: Int!
+  date: String!
+  total_amount: Float!
+  member: Member!
+  num_slip: String!
+}
+
+
+type Training {
+  id_training: ID!
+  name: String!
+}
+
+type Member {
+  id_member: ID!
+  card: String!
+  name: String!
+  firstName: String!
+  link_photo: String!
+  email: String!
+  price: Price!
+  code: Int!
+  secret_code: Int!
+  adherent: Boolean!
+  active: Boolean!
+  administrator: Boolean!
+  superAdministrator: Boolean!
+}
+
+type Reduction{
+  id_reduction: ID!
+  name: String!
+  active: Boolean!
+  rate: Float!
+  products: [Product]!
+}
+
+type Price{
+  id_price: ID!
+  name: String!
+  price: Float!
+  active: Boolean!
+}
+
+type Product{
+  id_product: ID!
+  barcode: String!
+  name: String!
+  selling_price: Float!
+}
+
+type Query {
+  allTrainings: [Training]
+  TrainingById(id_training: ID!): Training
+  allMembers: [Member]
+  MemberById(id_member: ID!): Member
+  allPrices: [Price]
+  PriceById(id_price: ID!): Price
+  allProducts: [Product]
+  ProductByBarCode(barcode: String!): Product
+  allTicketSlips: [ticketSlip]
+  allCoinsSlips: [coinsSlip]
+  TicketSlipByDate(date: String!): ticketSlip
+  CoinsSlipByDate(date: String!): coinsSlip
+  allReductions: [Reduction]
+  reductionById(id_reduction: ID!): Reduction
+  allCashFunds: [cashFund]
+  allCashFundsByMember(member: ID!): [cashFund]
+  cashFundById(id: ID!): cashFund
+}
+
+type Mutation {
+  createReduction(name: String!,active: Boolean!,rate: Float!,products: [ID]!): Reduction
+  createTraining(name: String!): Training
+  createMember(card: String!,name: String!,firstName: String!,link_photo: String!,email: String!,priceId: ID!,code: Int!,secret_code: Int!,adherent: Boolean!,active: Boolean!,administrator: Boolean!,superAdministrator: Boolean!): Member
+  createPrice(name: String!,price: Float!,active: Boolean!): Price
+  createProduct(barcode: String!, name: String!, selling_price: Float!): Product
+  createTicketSlip(fifty: Int!, twenty: Int!, ten: Int!, five:Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): ticketSlip
+  createCoinsSlip(two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): coinsSlip
+  createCashFund(date: String!, sum: Float!, member: Int!, fifty: Int!, twenty: Int!, ten: Int!, five: Int!,two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!): cashFund
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
