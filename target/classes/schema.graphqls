@@ -90,6 +90,13 @@ type Price{
   active: Boolean!
 }
 
+type Settings{
+  id_settings: ID!
+  photo_directory: String!
+  cash_register: Boolean!
+  scan: Boolean!
+}
+
 type Product{
   id_product: ID!
   barcode: String!

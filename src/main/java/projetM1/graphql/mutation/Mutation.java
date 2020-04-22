@@ -17,6 +17,8 @@ import projetM1.graphql.provider.Provider;
 import projetM1.graphql.provider.ProviderRepository;
 import projetM1.graphql.reduction.Reduction;
 import projetM1.graphql.reduction.ReductionRepository;
+import projetM1.graphql.settings.Settings;
+import projetM1.graphql.settings.SettingsRepository;
 import projetM1.graphql.slip.coins.CoinsSlip;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.ticket.TicketSlip;
