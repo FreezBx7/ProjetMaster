@@ -20,6 +20,9 @@
             <configuration>
             	<stopPort>8880</stopPort>
             	<stopKey>foo</stopKey>
+            	<httpConnector>
+                    <port>9090</port>
+                </httpConnector>
             </configuration>
         </plugin>
         <plugin>
