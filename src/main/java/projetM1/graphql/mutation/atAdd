@@ -1,8 +1,9 @@
 	private final CashFundRepository cashFundRepository;
+	private final ProviderRepository providerRepository;
 
     public Mutation(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
     		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository,CoinsSlipRepository coinsSlipRepository,
-    		ReductionRepository reductionRepository, CashFundRepository cashFundRepository) {
+    		ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository) {
         this.trainingRepository = trainingRepository;
         this.memberRepository = memberRepository;
         this.priceRepository = priceRepository;
@@ -11,6 +12,7 @@
         this.coinsSlipRepository = coinsSlipRepository;
         this.reductionRepository = reductionRepository;
         this.cashFundRepository = cashFundRepository;
+        this.providerRepository = providerRepository;
     }
     
     
@@ -25,4 +27,11 @@
     	CashFund newCashFund = new CashFund(count, date, sum, member, fifty, twenty, ten, five, two, one, fiftycents, twentycents, tencents, fivecents, twocents, onecents);
     	cashFundRepository.saveCashFund(newCashFund);
     	return newCashFund;
+    }
+    
+    public Provider createProvider(String name, String address, String phone, String email) {
+    	int count = providerRepository.getAllProvider().size() + 1;
+    	Provider newProvider = new Provider(count, name, address, phone, email);
+    	providerRepository.saveProvider(newProvider);
+    	return newProvider;
     }

@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
-import projetM1.graphql.cashfund.CashFund;
-import projetM1.graphql.cashfund.CashFundRepository;
 import projetM1.graphql.member.Member;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.price.Price;
@@ -43,7 +41,6 @@ public class Query implements GraphQLRootResolver {
 		this.coinsSlipRepository = coinsSlipRepository;
 		this.reductionRepository = reductionRepository;
 	}
-	
 
 
 	public List<Training> allTrainings(){
@@ -101,6 +98,5 @@ public class Query implements GraphQLRootResolver {
 	public Reduction reductionById(int id) {
 		return reductionRepository.findById(id);
 	}
-	
 
 }

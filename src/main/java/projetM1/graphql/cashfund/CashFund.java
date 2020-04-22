@@ -24,7 +24,7 @@ public class CashFund {
 	public CashFund(int id_cash, String date, double sum, int member, int fifty, int twenty, int ten, int five,
 			int two, int one, int fiftycents, int twentycents, int tencents, int fivecents, int twocents,
 			int onecents) {
-		super();
+		
 		this.id_cash = id_cash;
 		this.date = date;
 		this.sum = sum;

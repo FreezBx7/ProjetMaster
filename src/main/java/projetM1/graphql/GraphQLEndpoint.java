@@ -1,27 +1,13 @@
 package projetM1.graphql;
 
+import javax.servlet.annotation.WebServlet;
+
 import com.coxautodev.graphql.tools.SchemaParser;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import graphql.GraphQLError;
 import graphql.schema.GraphQLSchema;
-import graphql.servlet.GraphQLContext;
-import graphql.servlet.GraphQLServlet;
-import graphql.servlet.GraphQLServletListener;
 import graphql.servlet.SimpleGraphQLServlet;
-import projetM1.graphql.cashfund.CashFundRepository;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.member.MemberResolver;
 import projetM1.graphql.mutation.Mutation;
@@ -52,7 +38,6 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final TicketSlipRepository ticketSlipRepository;
 	private static final CoinsSlipRepository coinsSlipRepository;
 	private static final ReductionRepository reductionRepository;
-	private static final CashFundRepository cashFundRepository;
 	
 	
 	static {
@@ -66,7 +51,6 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         ticketSlipRepository = new TicketSlipRepository(mongo.getCollection("ticketSlip"));
         coinsSlipRepository = new CoinsSlipRepository(mongo.getCollection("coinsSlip"));
         reductionRepository = new ReductionRepository(mongo.getCollection("reduction"));
-        cashFundRepository = new CashFundRepository(mongo.getCollection("cashFund"));
     }
 	
 	public GraphQLEndpoint() {
@@ -81,8 +65,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(
-                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository),
-                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository),
+                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
+                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository),
                 		new MemberResolver(priceRepository),
                 		new TicketSlipResolver(memberRepository),
                 		new CoinsSlipResolver(memberRepository),

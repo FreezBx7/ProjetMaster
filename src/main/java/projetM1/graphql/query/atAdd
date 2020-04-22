@@ -1,8 +1,9 @@
 	private final CashFundRepository cashFundRepository;
+	private final ProviderRepository providerRepository;
 
 	public Query(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
 			ProductRepository productRepository,TicketSlipRepository ticketSlipRepository, CoinsSlipRepository coinsSlipRepository,
-			ReductionRepository reductionRepository, CashFundRepository cashFundRepository) {
+			ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository) {
 		
 		this.trainingRepository = trainingRepository;
 		this.memberRepository = memberRepository;
@@ -12,6 +13,7 @@
 		this.coinsSlipRepository = coinsSlipRepository;
 		this.reductionRepository = reductionRepository;
 		this.cashFundRepository = cashFundRepository;
+		this.providerRepository = providerRepository;
 	}
 	
 	
@@ -26,5 +28,13 @@
 	
 	public CashFund cashFundById(int id) {
 		return cashFundRepository.findById(id);
+	}
+	
+	public List<Provider> allProviders(){
+		return providerRepository.getAllProvider();
+	}
+	
+	public Provider providerById(int id) {
+		return providerRepository.findById(id);
 	}
 	

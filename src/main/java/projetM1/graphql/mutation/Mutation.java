@@ -1,13 +1,10 @@
 package projetM1.graphql.mutation;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
-import projetM1.graphql.cashfund.CashFund;
-import projetM1.graphql.cashfund.CashFundRepository;
 import projetM1.graphql.member.Member;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.price.Price;

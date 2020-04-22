@@ -1,3 +1,4 @@
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\provider\ProviderRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\filters\SimpleCORSFilter.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\coins\CoinsSlipRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\coins\CoinsSlip.java
@@ -11,6 +12,7 @@ D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\ticket\TicketSlipReso
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\product\Product.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\reduction\ReductionRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\price\Price.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\provider\Provider.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\training\Training.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\member\Member.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\member\MemberRepository.java

@@ -1,3 +1,11 @@
+type Provider{
+  id_provider: ID!
+  name: String!
+  address: String!
+  phone: String!
+  email: String!
+}
+
 type cashFund {
   id_cash: ID!
   date: String!
@@ -107,6 +115,8 @@ type Query {
   allCashFunds: [cashFund]
   allCashFundsByMember(member: ID!): [cashFund]
   cashFundById(id: ID!): cashFund
+  allProviders: [Provider]
+  providerById(id_provider: ID!): Provider
 }
 
 type Mutation {
@@ -118,6 +128,7 @@ type Mutation {
   createTicketSlip(fifty: Int!, twenty: Int!, ten: Int!, five:Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): ticketSlip
   createCoinsSlip(two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): coinsSlip
   createCashFund(date: String!, sum: Float!, member: Int!, fifty: Int!, twenty: Int!, ten: Int!, five: Int!,two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!): cashFund
+  createProvider(name: String!, address: String!, phone: String!, email: String!): Provider
 }
 
 schema {

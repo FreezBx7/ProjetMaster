@@ -70,7 +70,6 @@ type Product{
   selling_price: Float!
 }
 
-
 type Query {
   allTrainings: [Training]
   TrainingById(id_training: ID!): Training
