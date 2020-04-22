@@ -4,12 +4,16 @@ import java.util.List;
 
 import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
+import projetM1.graphql.cashfund.CashFund;
+import projetM1.graphql.cashfund.CashFundRepository;
 import projetM1.graphql.member.Member;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.price.Price;
 import projetM1.graphql.price.PriceRepository;
 import projetM1.graphql.product.Product;
 import projetM1.graphql.product.ProductRepository;
+import projetM1.graphql.provider.Provider;
+import projetM1.graphql.provider.ProviderRepository;
 import projetM1.graphql.reduction.Reduction;
 import projetM1.graphql.reduction.ReductionRepository;
 import projetM1.graphql.slip.coins.CoinsSlip;
@@ -28,10 +32,12 @@ public class Query implements GraphQLRootResolver {
 	private final TicketSlipRepository ticketSlipRepository;
 	private final CoinsSlipRepository coinsSlipRepository;
 	private final ReductionRepository reductionRepository;
+	private final CashFundRepository cashFundRepository;
+	private final ProviderRepository providerRepository;
 
 	public Query(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
 			ProductRepository productRepository,TicketSlipRepository ticketSlipRepository, CoinsSlipRepository coinsSlipRepository,
-			ReductionRepository reductionRepository) {
+			ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository) {
 		
 		this.trainingRepository = trainingRepository;
 		this.memberRepository = memberRepository;
@@ -40,6 +46,8 @@ public class Query implements GraphQLRootResolver {
 		this.ticketSlipRepository = ticketSlipRepository;
 		this.coinsSlipRepository = coinsSlipRepository;
 		this.reductionRepository = reductionRepository;
+		this.cashFundRepository = cashFundRepository;
+		this.providerRepository = providerRepository;
 	}
 
 
@@ -97,6 +105,26 @@ public class Query implements GraphQLRootResolver {
 	
 	public Reduction reductionById(int id) {
 		return reductionRepository.findById(id);
+	}
+	
+	public List<CashFund> allCashFunds(){
+		return cashFundRepository.getAllCashFunds();
+	}
+	
+	public List<CashFund> allCashFundsByMember(int member){
+		return cashFundRepository.getAllCashFundsByMember(member);
+	}
+	
+	public CashFund cashFundById(int id) {
+		return cashFundRepository.findById(id);
+	}
+	
+	public List<Provider> allProviders(){
+		return providerRepository.getAllProvider();
+	}
+	
+	public Provider providerById(int id) {
+		return providerRepository.findById(id);
 	}
 
 }
