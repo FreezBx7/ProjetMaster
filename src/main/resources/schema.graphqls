@@ -1,3 +1,30 @@
+type Provider{
+  id_provider: ID!
+  name: String!
+  address: String!
+  phone: String!
+  email: String!
+}
+
+type cashFund {
+  id_cash: ID!
+  date: String!
+  sum: Float!
+  member: Int!
+  fifty: Int!
+  twenty: Int!
+  ten: Int!
+  five:Int!
+  two: Int!
+  one: Int!
+  fiftycents: Int!
+  twentycents: Int!
+  tencents: Int!
+  fivecents: Int!
+  twocents: Int!
+  onecents: Int!
+}
+
 type ticketSlip {
   id_ticketSlip: ID!
   fifty: Int!
@@ -77,7 +104,6 @@ type Product{
   selling_price: Float!
 }
 
-
 type Query {
   allTrainings: [Training]
   TrainingById(id_training: ID!): Training
@@ -93,7 +119,11 @@ type Query {
   CoinsSlipByDate(date: String!): coinsSlip
   allReductions: [Reduction]
   reductionById(id_reduction: ID!): Reduction
-  allSettings: [Settings]
+  allCashFunds: [cashFund]
+  allCashFundsByMember(member: ID!): [cashFund]
+  cashFundById(id: ID!): cashFund
+  allProviders: [Provider]
+  providerById(id_provider: ID!): Provider
 }
 
 type Mutation {
@@ -104,8 +134,8 @@ type Mutation {
   createProduct(barcode: String!, name: String!, selling_price: Float!): Product
   createTicketSlip(fifty: Int!, twenty: Int!, ten: Int!, five:Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): ticketSlip
   createCoinsSlip(two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): coinsSlip
-  createSettings(photo_directory: String!, cash_register: Boolean!, scan: Boolean!) : Settings
-  updateSettings(id_settings: ID!, photo_directory: String, cash_register: Boolean, scan: Boolean) : Settings
+  createCashFund(date: String!, sum: Float!, member: Int!, fifty: Int!, twenty: Int!, ten: Int!, five: Int!,two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!): cashFund
+  createProvider(name: String!, address: String!, phone: String!, email: String!): Provider
 }
 
 schema {
