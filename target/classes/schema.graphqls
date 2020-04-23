@@ -6,6 +6,18 @@ type Provider{
   email: String!
 }
 
+type Inventory{
+  id_inventory: ID!
+  date: String!
+  products: [ProductMap]!
+}
+
+type ProductMap{
+  id_productMap: Id!
+  product: Product!
+  nombre: Int!
+}
+
 type cashFund {
   id_cash: ID!
   date: String!
@@ -119,6 +131,8 @@ type Query {
   CoinsSlipByDate(date: String!): coinsSlip
   allReductions: [Reduction]
   reductionById(id_reduction: ID!): Reduction
+  allInventory: [Inventory]
+  inventoryById( id_inventory: ID
   allCashFunds: [cashFund]
   allCashFundsByMember(member: ID!): [cashFund]
   cashFundById(id: ID!): cashFund
