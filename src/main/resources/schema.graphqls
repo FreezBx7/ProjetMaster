@@ -1,3 +1,19 @@
+type Sale{
+  id_sale: ID!
+  seller: Member!
+  buyer: Member!
+  date: String!
+  lines: [lineSale]!
+  price_tot: Float!
+}
+
+type lineSale{
+  id_line: ID!
+  product: Product!
+  quantity: Int!
+  sum: Float!
+}
+
 type Provider{
   id_provider: ID!
   name: String!
@@ -124,6 +140,13 @@ type Query {
   cashFundById(id: ID!): cashFund
   allProviders: [Provider]
   providerById(id_provider: ID!): Provider
+  allLineSales: [lineSale]
+  lineSaleById(id: ID!): lineSale
+  allSale: [Sale]
+  allSaleBySeller(id_seller: ID!): [Sale]
+  allSaleByBuyer(id_buyer: ID!): [Sale]
+  allSaleByDate(date: String!): [Sale]
+  saleById(id_sale: ID!): Sale
 }
 
 type Mutation {
@@ -136,6 +159,8 @@ type Mutation {
   createCoinsSlip(two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): coinsSlip
   createCashFund(date: String!, sum: Float!, member: Int!, fifty: Int!, twenty: Int!, ten: Int!, five: Int!,two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!): cashFund
   createProvider(name: String!, address: String!, phone: String!, email: String!): Provider
+  createLineSale(id_product: ID!, quantity: Int!, sum: Float!): lineSale
+  createSale(id_seller: ID!, id_buyer: ID!, date: String!, lines: [ID]!, price_tot: Float!): Sale
 }
 
 schema {

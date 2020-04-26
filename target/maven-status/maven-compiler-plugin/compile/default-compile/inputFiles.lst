@@ -1,8 +1,9 @@
-<<<<<<< HEAD
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\provider\ProviderRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\filters\SimpleCORSFilter.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\coins\CoinsSlipRepository.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\sale\SaleResolver.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\coins\CoinsSlip.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\sale\LineSaleResolver.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\coins\CoinsSlipResolver.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\ticket\TicketSlip.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\cashfund\CashFundRepository.java
@@ -14,42 +15,21 @@ D:\Master\ProjetMaster\src\main\java\projetM1\graphql\product\Product.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\reduction\ReductionRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\price\Price.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\provider\Provider.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\settings\SettingsRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\training\Training.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\member\Member.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\member\MemberRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\reduction\ReductionResolver.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\sale\Sale.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\sale\SaleRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\Slip.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\settings\Settings.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\reduction\Reduction.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\training\TrainingRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\cashfund\CashFund.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\query\Query.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\sale\LineSale.java
+D:\Master\ProjetMaster\src\main\java\projetM1\graphql\sale\LineSaleRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\mutation\Mutation.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\price\PriceRepository.java
 D:\Master\ProjetMaster\src\main\java\projetM1\graphql\slip\ticket\TicketSlipRepository.java
-=======
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/training/Training.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/training/TrainingRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/slip/ticket/TicketSlipResolver.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/reduction/ReductionResolver.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/product/Product.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/member/MemberResolver.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/slip/ticket/TicketSlip.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/settings/SettingsRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/slip/Slip.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/GraphQLEndpoint.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/settings/Settings.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/slip/coins/CoinsSlipRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/reduction/ReductionRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/mutation/Mutation.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/member/MemberRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/slip/ticket/TicketSlipRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/product/ProductRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/price/PriceRepository.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/member/Member.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/price/Price.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/reduction/Reduction.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/query/Query.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/filters/SimpleCORSFilter.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/slip/coins/CoinsSlipResolver.java
-/Users/cyriaque/Documents/Master TNSI/ProjetMaster/src/main/java/projetM1/graphql/slip/coins/CoinsSlip.java
->>>>>>> masterBack
