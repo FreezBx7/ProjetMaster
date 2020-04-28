@@ -6,6 +6,8 @@ import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
 import projetM1.graphql.cashfund.CashFund;
 import projetM1.graphql.cashfund.CashFundRepository;
+import projetM1.graphql.inventory.Inventory;
+import projetM1.graphql.inventory.InventoryRepository;
 import projetM1.graphql.member.Member;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.price.Price;
@@ -36,11 +38,15 @@ public class Query implements GraphQLRootResolver {
 	private final ReductionRepository reductionRepository;
 	private final CashFundRepository cashFundRepository;
 	private final ProviderRepository providerRepository;
+	private final InventoryRepository inventoryRepository;
+	private final SettingsRepository settingsRepository;
 
 	public Query(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
 			ProductRepository productRepository,TicketSlipRepository ticketSlipRepository, CoinsSlipRepository coinsSlipRepository,
-			ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository) {
+			ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository,
+			InventoryRepository inventoryRepository,SettingsRepository settingsRepository) {
 		
+		this.inventoryRepository = inventoryRepository;
 		this.trainingRepository = trainingRepository;
 		this.memberRepository = memberRepository;
 		this.priceRepository = priceRepository;
@@ -50,6 +56,7 @@ public class Query implements GraphQLRootResolver {
 		this.reductionRepository = reductionRepository;
 		this.cashFundRepository = cashFundRepository;
 		this.providerRepository = providerRepository;
+		this.settingsRepository = settingsRepository;
 	}
 
 
@@ -127,6 +134,22 @@ public class Query implements GraphQLRootResolver {
 	
 	public Provider providerById(int id) {
 		return providerRepository.findById(id);
+	}
+	
+	public List<Inventory> allInventory(){
+		return inventoryRepository.getAllInventorys();
+	}
+	
+	public Inventory inventoryById(int id) {
+		return inventoryRepository.findById(id);
+	}
+	
+	public Inventory inventoryByDate(String date) {
+		return inventoryRepository.findByDate(date);
+	}
+	
+	public List<Settings> allSettings(){
+		return settingsRepository.getAllSettings();
 	}
 
 }

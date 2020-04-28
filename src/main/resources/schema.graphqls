@@ -15,7 +15,7 @@ type Inventory{
 type ProductMap{
   id_productMap: Id!
   product: Product!
-  nombre: Int!
+  quantity: Int!
 }
 
 type cashFund {
@@ -133,11 +133,13 @@ type Query {
   reductionById(id_reduction: ID!): Reduction
   allInventory: [Inventory]
   inventoryById( id_inventory: ID!): Inventory
+  inventoryByDate(date: String!): Inventory
   allCashFunds: [cashFund]
   allCashFundsByMember(member: ID!): [cashFund]
   cashFundById(id: ID!): cashFund
   allProviders: [Provider]
   providerById(id_provider: ID!): Provider
+  allSettings: [Settings]
 }
 
 type Mutation {
@@ -151,6 +153,8 @@ type Mutation {
   createCoinsSlip(two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!, date: String!, total_amount: Float!, memberId: ID!, num_slip: String!): coinsSlip
   createCashFund(date: String!, sum: Float!, member: Int!, fifty: Int!, twenty: Int!, ten: Int!, five: Int!,two: Int!, one: Int!, fiftycents: Int!, twentycents: Int!, tencents: Int!, fivecents: Int!,  twocents: Int!, onecents: Int!): cashFund
   createProvider(name: String!, address: String!, phone: String!, email: String!): Provider
+  createSettings(photo_directory: String!, cash_register: Boolean!, scan: Boolean!) : Settings
+  updateSettings(id_settings: ID!, photo_directory: String, cash_register: Boolean, scan: Boolean) : Settings
 }
 
 schema {

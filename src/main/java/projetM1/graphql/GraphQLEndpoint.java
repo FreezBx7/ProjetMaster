@@ -9,6 +9,7 @@ import com.mongodb.client.MongoDatabase;
 import graphql.schema.GraphQLSchema;
 import graphql.servlet.SimpleGraphQLServlet;
 import projetM1.graphql.cashfund.CashFundRepository;
+import projetM1.graphql.inventory.InventoryRepository;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.member.MemberResolver;
 import projetM1.graphql.mutation.Mutation;
@@ -43,6 +44,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final ReductionRepository reductionRepository;
 	private static final CashFundRepository cashFundRepository;
 	private static final ProviderRepository providerRepository;
+	private static final InventoryRepository inventoryRepository;
+	private static final SettingsRepository settingsRepository;
 	
 	
 	static {
@@ -58,6 +61,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         reductionRepository = new ReductionRepository(mongo.getCollection("reduction"));
         cashFundRepository = new CashFundRepository(mongo.getCollection("cashFund"));
         providerRepository = new ProviderRepository(mongo.getCollection("provider"));
+        inventoryRepository = new InventoryRepository(mongo.getCollection("inventory"));
+        settingsRepository = new SettingsRepository(mongo.getCollection("settings"));
     }
 	
 	public GraphQLEndpoint() {
@@ -72,8 +77,10 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(
-                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository,providerRepository),
-                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository,providerRepository),
+                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,
+                				  reductionRepository,cashFundRepository,providerRepository,inventoryRepository,settingsRepository),
+                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,
+                				  reductionRepository,cashFundRepository,providerRepository,inventoryRepository,settingsRepository),
                 		new MemberResolver(priceRepository),
                 		new TicketSlipResolver(memberRepository),
                 		new CoinsSlipResolver(memberRepository),

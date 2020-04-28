@@ -7,11 +7,14 @@ import com.coxautodev.graphql.tools.GraphQLRootResolver;
 
 import projetM1.graphql.cashfund.CashFund;
 import projetM1.graphql.cashfund.CashFundRepository;
+import projetM1.graphql.inventory.Inventory;
+import projetM1.graphql.inventory.InventoryRepository;
 import projetM1.graphql.member.Member;
 import projetM1.graphql.member.MemberRepository;
 import projetM1.graphql.price.Price;
 import projetM1.graphql.price.PriceRepository;
 import projetM1.graphql.product.Product;
+import projetM1.graphql.product.ProductMap;
 import projetM1.graphql.product.ProductRepository;
 import projetM1.graphql.provider.Provider;
 import projetM1.graphql.provider.ProviderRepository;
@@ -37,10 +40,14 @@ public class Mutation implements GraphQLRootResolver {
 	private final ReductionRepository reductionRepository;
 	private final CashFundRepository cashFundRepository;
 	private final ProviderRepository providerRepository;
+	private final InventoryRepository inventoryRepository;
+	private final SettingsRepository settingsRepository;
 
     public Mutation(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
     		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository,CoinsSlipRepository coinsSlipRepository,
-    		ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository) {
+    		ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository,
+    		InventoryRepository inventoryRepository, SettingsRepository settingsRepository) {
+    	this.inventoryRepository = inventoryRepository;
         this.trainingRepository = trainingRepository;
         this.memberRepository = memberRepository;
         this.priceRepository = priceRepository;
@@ -50,6 +57,7 @@ public class Mutation implements GraphQLRootResolver {
         this.reductionRepository = reductionRepository;
         this.cashFundRepository = cashFundRepository;
         this.providerRepository = providerRepository;
+        this.settingsRepository = settingsRepository;
     }
     
     public Training createTraining(String name) {
@@ -122,5 +130,25 @@ public class Mutation implements GraphQLRootResolver {
     	Provider newProvider = new Provider(count, name, address, phone, email);
     	providerRepository.saveProvider(newProvider);
     	return newProvider;
+    }
+    
+    public Inventory createInventory(String date, List<ProductMap> products) {
+    	int count = inventoryRepository.getAllInventorys().size() + 1;
+    	Inventory newInventory = new Inventory(count,date,products);
+    	inventoryRepository.savePInventory(newInventory);
+    	return newInventory;
+    	
+    }
+    
+    public Settings createSettings(String photo_directory,boolean cash_register, boolean scan) {
+    	int count = settingsRepository.getAllSettings().size() + 1;
+    	Settings newSettings = new Settings(count,photo_directory,cash_register,scan);
+    	settingsRepository.saveSettings(newSettings);
+    	return newSettings;
+    }
+    public Settings updateSettings(int id_settings, String photo_directory,boolean cash_register, boolean scan) {
+    	Settings updateSettings = new Settings(id_settings,photo_directory,cash_register,scan);
+    	settingsRepository.updateSettings(updateSettings);
+    	return updateSettings;
     }
 }
