@@ -13,7 +13,7 @@ type Inventory{
 }
 
 type ProductMap{
-  id_productMap: Id!
+  id_productMap: ID!
   product: Product!
   quantity: Int!
 }
