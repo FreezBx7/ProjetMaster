@@ -17,8 +17,10 @@ import projetM1.graphql.provider.Provider;
 import projetM1.graphql.provider.ProviderRepository;
 import projetM1.graphql.reduction.Reduction;
 import projetM1.graphql.reduction.ReductionRepository;
-import projetM1.graphql.settings.Settings;
-import projetM1.graphql.settings.SettingsRepository;
+import projetM1.graphql.sale.LineSale;
+import projetM1.graphql.sale.LineSaleRepository;
+import projetM1.graphql.sale.Sale;
+import projetM1.graphql.sale.SaleRepository;
 import projetM1.graphql.slip.coins.CoinsSlip;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.ticket.TicketSlip;
@@ -37,10 +39,13 @@ public class Mutation implements GraphQLRootResolver {
 	private final ReductionRepository reductionRepository;
 	private final CashFundRepository cashFundRepository;
 	private final ProviderRepository providerRepository;
+	private final LineSaleRepository lineSaleRepository;
+	private final SaleRepository saleRepository;
 
     public Mutation(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
     		ProductRepository productRepository,TicketSlipRepository ticketSlipRepository,CoinsSlipRepository coinsSlipRepository,
-    		ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository) {
+    		ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository,
+    		LineSaleRepository lineSaleRepository, SaleRepository saleRepository) {
         this.trainingRepository = trainingRepository;
         this.memberRepository = memberRepository;
         this.priceRepository = priceRepository;
@@ -50,6 +55,8 @@ public class Mutation implements GraphQLRootResolver {
         this.reductionRepository = reductionRepository;
         this.cashFundRepository = cashFundRepository;
         this.providerRepository = providerRepository;
+        this.lineSaleRepository = lineSaleRepository;
+        this.saleRepository = saleRepository;
     }
     
     public Training createTraining(String name) {
@@ -122,5 +129,19 @@ public class Mutation implements GraphQLRootResolver {
     	Provider newProvider = new Provider(count, name, address, phone, email);
     	providerRepository.saveProvider(newProvider);
     	return newProvider;
+    }
+    
+    public LineSale createLineSale(int id_product, int quantity, double sum) {
+    	int count = lineSaleRepository.getAllLineSales().size() + 1;
+    	LineSale newLineSale = new LineSale(count, id_product, quantity, sum);
+    	lineSaleRepository.saveLineSale(newLineSale);
+    	return newLineSale;
+    }
+    
+    public Sale createSale(int id_seller, int id_buyer, String date, List<Integer> lines, double price_tot) {
+    	int count = saleRepository.getAllSale().size() + 1;
+    	Sale newSale = new Sale(count, id_seller, id_buyer, date, lines, price_tot);
+    	saleRepository.saveSale(newSale);
+    	return newSale;
     }
 }

@@ -16,8 +16,10 @@ import projetM1.graphql.provider.Provider;
 import projetM1.graphql.provider.ProviderRepository;
 import projetM1.graphql.reduction.Reduction;
 import projetM1.graphql.reduction.ReductionRepository;
-import projetM1.graphql.settings.Settings;
-import projetM1.graphql.settings.SettingsRepository;
+import projetM1.graphql.sale.LineSale;
+import projetM1.graphql.sale.LineSaleRepository;
+import projetM1.graphql.sale.Sale;
+import projetM1.graphql.sale.SaleRepository;
 import projetM1.graphql.slip.coins.CoinsSlip;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.ticket.TicketSlip;
@@ -36,10 +38,13 @@ public class Query implements GraphQLRootResolver {
 	private final ReductionRepository reductionRepository;
 	private final CashFundRepository cashFundRepository;
 	private final ProviderRepository providerRepository;
+	private final LineSaleRepository lineSaleRepository;
+	private final SaleRepository saleRepository;
 
 	public Query(TrainingRepository trainingRepository,MemberRepository memberRepository,PriceRepository priceRepository,
 			ProductRepository productRepository,TicketSlipRepository ticketSlipRepository, CoinsSlipRepository coinsSlipRepository,
-			ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository) {
+			ReductionRepository reductionRepository, CashFundRepository cashFundRepository, ProviderRepository providerRepository,
+			LineSaleRepository lineSaleRepository, SaleRepository saleRepository) {
 		
 		this.trainingRepository = trainingRepository;
 		this.memberRepository = memberRepository;
@@ -50,6 +55,8 @@ public class Query implements GraphQLRootResolver {
 		this.reductionRepository = reductionRepository;
 		this.cashFundRepository = cashFundRepository;
 		this.providerRepository = providerRepository;
+        this.lineSaleRepository = lineSaleRepository;
+        this.saleRepository = saleRepository;
 	}
 
 
@@ -129,4 +136,31 @@ public class Query implements GraphQLRootResolver {
 		return providerRepository.findById(id);
 	}
 
+	public List<LineSale> allLineSales(){
+		return lineSaleRepository.getAllLineSales();
+	}
+	
+	public LineSale lineSaleById(int id) {
+		return lineSaleRepository.findById(id);
+	}
+	
+	public List<Sale> allSale() {
+		return saleRepository.getAllSale();
+	}
+	
+	public List<Sale> allSaleBySeller(int id_seller) {
+		return saleRepository.getAllSaleBySeller(id_seller);
+	}
+	
+	public List<Sale> allSaleByBuyer(int id_buyer) {
+		return saleRepository.getAllSaleByBuyer(id_buyer);
+	}
+	
+	public List<Sale> allSaleByDate(String date) {
+		return saleRepository.getAllSaleByDate(date);
+	}
+	
+	public Sale saleById(int id_sale) {
+		return saleRepository.findById(id_sale);
+	}
 }

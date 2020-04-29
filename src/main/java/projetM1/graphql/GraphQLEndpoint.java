@@ -18,7 +18,10 @@ import projetM1.graphql.provider.ProviderRepository;
 import projetM1.graphql.query.Query;
 import projetM1.graphql.reduction.ReductionRepository;
 import projetM1.graphql.reduction.ReductionResolver;
-import projetM1.graphql.settings.SettingsRepository;
+import projetM1.graphql.sale.LineSaleRepository;
+import projetM1.graphql.sale.LineSaleResolver;
+import projetM1.graphql.sale.SaleRepository;
+import projetM1.graphql.sale.SaleResolver;
 import projetM1.graphql.slip.coins.CoinsSlipRepository;
 import projetM1.graphql.slip.coins.CoinsSlipResolver;
 import projetM1.graphql.slip.ticket.TicketSlipRepository;
@@ -43,6 +46,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
 	private static final ReductionRepository reductionRepository;
 	private static final CashFundRepository cashFundRepository;
 	private static final ProviderRepository providerRepository;
+	private static final LineSaleRepository lineSaleRepository;
+	private static final SaleRepository saleRepository;
 	
 	
 	static {
@@ -58,6 +63,8 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         reductionRepository = new ReductionRepository(mongo.getCollection("reduction"));
         cashFundRepository = new CashFundRepository(mongo.getCollection("cashFund"));
         providerRepository = new ProviderRepository(mongo.getCollection("provider"));
+        lineSaleRepository = new LineSaleRepository(mongo.getCollection("lineSale"));
+        saleRepository = new SaleRepository(mongo.getCollection("sale"));
     }
 	
 	public GraphQLEndpoint() {
@@ -72,12 +79,14 @@ public class GraphQLEndpoint extends SimpleGraphQLServlet {
         return SchemaParser.newParser()
                 .file("schema.graphqls")
                 .resolvers(
-                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository,providerRepository),
-                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository,providerRepository),
+                		new Query(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository,providerRepository,lineSaleRepository,saleRepository),
+                		new Mutation(trainingRepository,memberRepository,priceRepository,productRepository,ticketSlipRepository,coinsSlipRepository,reductionRepository,cashFundRepository,providerRepository,lineSaleRepository,saleRepository),
                 		new MemberResolver(priceRepository),
                 		new TicketSlipResolver(memberRepository),
                 		new CoinsSlipResolver(memberRepository),
-                		new ReductionResolver(productRepository))
+                		new ReductionResolver(productRepository),
+                		new SaleResolver(memberRepository, lineSaleRepository),
+                		new LineSaleResolver(productRepository))
                 .build()
                 .makeExecutableSchema();
         

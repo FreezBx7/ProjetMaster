@@ -1,7 +1,13 @@
-<<<<<<< HEAD
+projetM1\graphql\sale\Sale.class
+projetM1\graphql\sale\LineSale.class
+projetM1\graphql\sale\SaleResolver.class
+projetM1\graphql\sale\SaleRepository.class
+projetM1\graphql\productmap\ProductMapRepository.class
+projetM1\graphql\sale\LineSaleRepository.class
+projetM1\graphql\productmap\ProductMapResolver.class
+projetM1\graphql\productmap\ProductMap.class
 projetM1\graphql\provider\ProviderRepository.class
+projetM1\graphql\sale\LineSaleResolver.class
 projetM1\graphql\product\Product.class
 projetM1\graphql\provider\Provider.class
 projetM1\graphql\product\ProductRepository.class
-=======
->>>>>>> masterBack
